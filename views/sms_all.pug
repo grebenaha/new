@@ -2,6 +2,7 @@ extends layout
 
 block content
     script(src='/javascripts/notify.js')
+
     h1= title
 
     if sms_list
@@ -15,6 +16,6 @@ block content
                             b.margin_right Message:
                             span #{sms.content}
                     div.col-sm
-                        button().btn.btn-primary Edit
+                        a(href=sms.url) Edit
     else
         li There are no sms.

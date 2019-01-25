@@ -34,7 +34,7 @@ router.post('/sms/:id/update', sms_controller.sms_update_post);
 router.get('/sms/:id', sms_controller.sms_detail);
 
 // GET request for list of all SMS items.
-router.get('/all', sms_controller.sms_all);
+router.get('/allsms', sms_controller.sms_all);
 
 /// whitelists ROUTES ///
 

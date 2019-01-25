@@ -12,21 +12,9 @@ const SmsSchema = new Schema(
 );
 
 SmsSchema
-    .virtual('/recipient')
+    .virtual('url')
     .get(function () {
-        return this.recipient;
-    });
-
-SmsSchema
-    .virtual('/content')
-    .get(function () {
-        return this.content;
-    });
-
-SmsSchema
-    .virtual('/url')
-    .get(function () {
-        return '/sms/all/' + this._id;
+        return '/smsAdmin/sms/' + this._id;
     });
 
 //Export model

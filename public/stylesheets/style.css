@@ -1,0 +1,16 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+    padding-top: 0rem;
+}
+.margin_all {
+    margin: 5px;
+}
+.margin_left {
+    margin-left: 5px;
+}
+.margin_right {
+    margin-right: 5px;
+}
+.margin_top {
+
+}

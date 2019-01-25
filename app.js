@@ -13,7 +13,7 @@ const dbUser = '';
 const dbPass= '';
 // Set up mongoose connection
 const mongoose = require('mongoose');
-const dev_db_url = 'mongodb://'+ dbUser +':' + dbPass + '@sms-shard-00-00-w6avv.mongodb.net:27017,sms-shard-00-01-w6avv.mongodb.net:27017,sms-shard-00-02-w6avv.mongodb.net:27017/sms?ssl=true&replicaSet=sms-shard-0&authSource=admin&retryWrites=true'
+const dev_db_url = 'mongodb://' + dbUser + ':' + dbPass + '@sms-shard-00-00-w6avv.mongodb.net:27017,sms-shard-00-01-w6avv.mongodb.net:27017,sms-shard-00-02-w6avv.mongodb.net:27017/sms?ssl=true&replicaSet=sms-shard-0&authSource=admin&retryWrites=true'
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;

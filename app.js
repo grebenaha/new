@@ -9,8 +9,8 @@ const usersRouter = require('./routes/users');
 const smsRouter = require('./routes/smsAdmin');
 
 const app = express();
-const dbUser = '';
-const dbPass= '';
+const dbUser = 'igor';
+const dbPass= 'Neiron30';
 // Set up mongoose connection
 const mongoose = require('mongoose');
 const dev_db_url = 'mongodb://' + dbUser + ':' + dbPass + '@sms-shard-00-00-w6avv.mongodb.net:27017,sms-shard-00-01-w6avv.mongodb.net:27017,sms-shard-00-02-w6avv.mongodb.net:27017/sms?ssl=true&replicaSet=sms-shard-0&authSource=admin&retryWrites=true'

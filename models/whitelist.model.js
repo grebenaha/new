@@ -12,21 +12,9 @@ const WhitelistsSchema = new Schema(
 );
 
 WhitelistsSchema
-    .virtual('/phone_number')
+    .virtual('url')
     .get(function () {
-        return this.recipient;
-    });
-
-WhitelistsSchema
-    .virtual('/content')
-    .get(function () {
-        return this.content;
-    });
-
-WhitelistsSchema
-    .virtual('/url')
-    .get(function () {
-        return '/whitelists/all/' + this._id;
+        return '/smsAdmin/whitelist/' + this._id;
     });
 
 //Export model

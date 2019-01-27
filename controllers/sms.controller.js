@@ -1,9 +1,8 @@
 const Sms = require('../models/sms.model');
-const Whitelists = require('../models/whitelists.model');
+const Whitelist = require('../models/whitelist.model');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-
 const async = require('async');
 
 exports.index = function(req, res) {
@@ -11,8 +10,8 @@ exports.index = function(req, res) {
         sms_count: function(callback) {
             Sms.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
-        whitelists_count: function(callback) {
-            Whitelists.countDocuments({}, callback);
+        whitelist_count: function(callback) {
+            Whitelist.countDocuments({}, callback);
         },
     }, function(err, results) {
         res.render('index', { title: 'SMS Admin Panel', error: err, data: results });
@@ -22,7 +21,6 @@ exports.index = function(req, res) {
 // Show all sms.
 exports.sms_all = function(req, res) {
     Sms.find({})
-        //.populate('content')
         .exec(function (err, list_sms) {
             if (err) { console.log(err) ; }
             //Successful, so render
@@ -34,16 +32,13 @@ exports.sms_all = function(req, res) {
 exports.sms_detail = function(req, res) {
     async.parallel({
         sms: function(callback) {
-
             Sms.findById(req.params.id)
-                // .populate('author')
-                // .populate('genre')
                 .exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.sms==null) { // No results.
-            const err = new Error('Book not found');
+            const err = new Error('SMS not found');
             err.status = 404;
             return next(err);
         }

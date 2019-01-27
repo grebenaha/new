@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+    h1= title
+
+    if whitelist_list
+        each sms in whitelist_list
+            div.container
+                div.row
+                    div.col-lg-10
+                        a.list-group-item.list-group-item-action.list-group-item-primary
+                            b.margin_right Recipient:
+                            span.margin_right #{sms.recipient}
+                            b.margin_right Message:
+                            span #{sms.content}
+                    div.col-sm
+                        a(href=sms.url) Edit
+    else
+        li There are no sms in Whitelist.

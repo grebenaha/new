@@ -2,17 +2,12 @@ extends layout
 
 block content
     if sms
-        h1 #{title}: #{sms.recipient}
+        h2 #{title}: #{sms.recipient}
 
         p #[strong Content:] #{sms.content}
         p #[strong Created:] #{sms.createdAt}
         p #[strong Updated:] #{sms.updatedAt}
         p #[strong ID:] #{sms._id}
-
-        p
-            a(href=sms.url + '/delete') Delete SMS
-        p
-            a(href=sms.url + '/update') Update SMS
 
     else
         p There are no sms here.

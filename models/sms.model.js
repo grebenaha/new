@@ -2,14 +2,18 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const SmsSchema = new Schema(
-    {
-        updatedAt: {type: Date},
-        createdAt: {type: Date},
-        content: {type: String, required: true, max: 100},
-        recipient: {type: String, required: true, max: 100},
+const SmsSchema = new Schema({
+        recipient: {
+            index: {
+                unique: true
+            },
+            required: true,
+            type: String
+        },
+    content: {
+            type: String
     }
-);
+    }, { timestamps: true });
 
 SmsSchema
     .virtual('url')

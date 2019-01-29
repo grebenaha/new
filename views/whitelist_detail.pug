@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    if whitelist
+        h2 #{title}
+
+        p #[strong Phone Number:] #{whitelist.recipient}
+        p #[strong Created:] #{whitelist.createdAt}
+        p #[strong Updated:] #{whitelist.updatedAt}
+        p #[strong ID:] #{whitelist._id}
+
+        p
+            a(href=whitelist.url + '/delete') Delete from Whitelist
+        p
+            a(href=whitelist.url + '/update') Edit SMS
+
+    else
+        p There are no sms here.

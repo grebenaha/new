@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    if whitelist
+        h1 #{title}: #{whitelist.recipient}
+
+
+        if !whitelist.recipient.length
+            p Something wrong
+        else
+            p Do you really want to delete this Number?
+
+            form(method='POST' action='')
+                div.form-group
+                    input#whitelistid.form-control(type='hidden', name='whitelistid', required='true', value=whitelist._id )
+
+                button.btn.btn-primary(type='submit') Delete
+
+            a(href='/smsAdmin/whitelist') Back

@@ -1,21 +1,21 @@
 extends layout
 
 block content
-    script(src='/javascripts/notify.js')
 
-    h2= title
+    h1= title
+    p
+        a(href='/smsAdmin/blacklist/add') Add to Blacklist
 
-    if sms_list
-        each sms in sms_list
+    if blacklist_list
+        each sms in blacklist_list
             div.container
                 div.row
                     div.col-lg-10
                         a.list-group-item.list-group-item-action.list-group-item-primary
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
-                            b.margin_right Message:
-                            span #{sms.content}
                     div.col-sm
-                        a(href=sms.url) View
+                        a(href=sms.url) Edit
+
     else
-        li There are no sms.
+        li There are no sms in blacklist.

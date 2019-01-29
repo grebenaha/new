@@ -3,6 +3,8 @@ extends layout
 block content
 
     h1= title
+    p
+        a(href='/smsAdmin/whitelist/add') Add to Whitelist
 
     if whitelist_list
         each sms in whitelist_list
@@ -12,8 +14,6 @@ block content
                         a.list-group-item.list-group-item-action.list-group-item-primary
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
-                            b.margin_right Message:
-                            span #{sms.content}
                     div.col-sm
                         a(href=sms.url) Edit
     else

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    if blacklist
+        h2 #{title}
+
+        p #[strong Phone Number:] #{blacklist.recipient}
+        p #[strong Created:] #{blacklist.createdAt}
+        p #[strong Updated:] #{blacklist.updatedAt}
+        p #[strong ID:] #{blacklist._id}
+
+        p
+            a(href=blacklist.url + '/delete') Delete from Blacklist
+
+
+    else
+        p There are no sms here.

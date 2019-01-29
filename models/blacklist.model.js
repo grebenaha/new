@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const WhitelistsSchema = new Schema({
+const BlacklistsSchema = new Schema({
     recipient: {
         index: {
             unique: true
@@ -12,11 +12,11 @@ const WhitelistsSchema = new Schema({
     }
 })
 
-WhitelistsSchema
+BlacklistsSchema
     .virtual('url')
     .get(function () {
-        return '/smsAdmin/whitelist/' + this._id;
+        return '/smsAdmin/blacklist/' + this._id;
     });
 
 //Export model
-module.exports = mongoose.model('whitelists', WhitelistsSchema);
+module.exports = mongoose.model('blacklist', BlacklistsSchema);

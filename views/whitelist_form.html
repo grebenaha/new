@@ -28,8 +28,13 @@
       <div class="jumbotron">
         <div class="container">
           <h1></h1>
-          <p><a href="/smsAdmin/whitelist/add">Add to Whitelist</a></p>
-          <li>There are no sms in Whitelist.</li>
+          <form method="POST" action="">
+            <div class="form-group">
+              <label for="recipient">Recipient:</label>
+              <input class="form-control col-5" id="recipient" type="text" placeholder="+972xxxxxxxxx" name="recipient" required="true" value="">
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
         </div>
         <!--script(src='/javascript/my.js')-->
       </div>

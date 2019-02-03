@@ -6,7 +6,7 @@ block content
     p
         a(href='/smsAdmin/whitelist/add') Add to Whitelist
 
-    if whitelist_list
+    if whitelist_list && whitelist_list.length >= 1
         each sms in whitelist_list
             div.container
                 div.row
@@ -18,3 +18,5 @@ block content
                         a(href=sms.url) Edit
     else
         li There are no sms in Whitelist.
+
+    include _paginate

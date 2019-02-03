@@ -1,6 +1,10 @@
 const Sms = require('../models/sms.model');
 const Whitelist = require('../models/whitelist.model');
 const Blacklist = require('../models/blacklist.model');
+const Hourly = require('../models/hourly.model');
+const Daily = require('../models/daily.model');
+
+const paginate = require('express-paginate');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -16,6 +20,12 @@ exports.index = function(req, res) {
         },
         blacklist_count: function (callback) {
             Blacklist.countDocuments({}, callback)
+        },
+        hourly_count: function (callback) {
+            Hourly.countDocuments({}, callback)
+        },
+        daily_count: function (callback) {
+            Daily.countDocuments({}, callback)
         }
     }, function(err, results) {
         res.render('index', { title: 'SMS Admin Panel', error: err, data: results });
@@ -23,13 +33,31 @@ exports.index = function(req, res) {
 };
 
 // Show all sms.
-exports.sms_all = function(req, res) {
-    Sms.find({})
-        .exec(function (err, list_sms) {
-            if (err) { console.log(err) ; }
-            //Successful, so render
-            res.render('sms_all', { title: 'SMS List', sms_list: list_sms });
-        });
+exports.sms_all = async function(req, res) {
+    try {
+        const [ results, itemCount ] = await Promise.all([
+            Sms.find({}).limit(req.query.limit).skip(req.skip).exec(),
+            Sms.count({}).lean()
+        ]);
+
+        const pageCount = Math.ceil(itemCount / req.query.limit);
+            res.render('sms_all', {
+                title: 'SMS List',
+                sms_list: results,
+                pageCount,
+                itemCount,
+                pages: paginate.getArrayPages(req)(10, pageCount, req.query.page)
+            });
+
+    } catch (err) {
+        next(err);
+    }
+    // Sms.find({})
+    //     .exec(function (err, list_sms) {
+    //         if (err) { console.log(err) ; }
+    //         //Successful, so render
+    //         res.render('sms_all', { title: 'SMS List', sms_list: list_sms });
+    //     });
 };
 
 // Show a detailed page for this sms.

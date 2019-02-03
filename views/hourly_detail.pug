@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    if hourly
+        h2 #{title}
+
+        p #[strong Phone Number:] #{hourly.recipient}
+        p #[strong Created:] #{hourly.createdAt}
+        p #[strong Updated:] #{hourly.updatedAt}
+        p #[strong ID:] #{hourly._id}
+
+        p
+            a(href=hourly.url + '/delete') Delete from Hourly messages
+
+
+    else
+        p There are no sms here.

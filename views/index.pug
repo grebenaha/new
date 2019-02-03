@@ -11,7 +11,19 @@ block content
         p The messages counts:
 
 
-        ul
-            li #[strong All SMS:] !{data.sms_count}
-            li #[strong Whitelist:] !{data.whitelist_count}
-            li #[strong Blacklist:] !{data.blacklist_count}
+        ul.list-group
+            li.d-flex.justify-content-between.align-items-center.col-sm-2
+                a(href='smsAdmin/allsms').text-info #[strong All SMS:]
+                span.badge.badge-primary.badge-pill !{data.sms_count}
+            li.d-flex.justify-content-between.align-items-center.col-sm-2
+                a(href='smsAdmin/hourly_messages').text-info #[strong Hourly SMS:]
+                span.badge.badge-primary.badge-pill !{data.hourly_count}
+            li.d-flex.justify-content-between.align-items-center.col-sm-2
+                a(href='smsAdmin/daily_messages').text-info #[strong Daily SMS:]
+                span.badge.badge-primary.badge-pill !{data.daily_count}
+            li.d-flex.justify-content-between.align-items-center.col-sm-2
+                a(href='smsAdmin/whitelist').text-info #[strong Whitelist:]
+                span.badge.badge-primary.badge-pill !{data.whitelist_count}
+            li.d-flex.justify-content-between.align-items-center.col-sm-2
+                a(href='smsAdmin/blacklist').text-info #[strong Blacklist:]
+                span.badge.badge-primary.badge-pill !{data.blacklist_count}

@@ -1,17 +1,30 @@
 const Blacklist = require('../models/blacklist.model');
 const async = require('async')
 
+const paginate = require('express-paginate');
+
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
 // Show all blacklists.
-exports.blacklist_all = function(req, res) {
-    Blacklist.find({})
-        .exec(function (err, blacklist) {
-            if (err) { console.log(err) ; }
-            //Successful, so render
-            res.render('blacklist_all', { title: 'BlackList', blacklist_list: blacklist });
+exports.blacklist_all = async function(req, res) {
+    try {
+        const [ results, itemCount ] = await Promise.all([
+            Blacklist.find({}).limit(req.query.limit).skip(req.skip).exec(),
+            Blacklist.count({}).lean()
+        ]);
+
+        const pageCount = Math.ceil(itemCount / req.query.limit);
+        res.render('blacklist_all', {
+            title: 'Blacklist messages',
+            blacklist_list: results,
+            pageCount,
+            itemCount,
+            pages: paginate.getArrayPages(req)(10, pageCount, req.query.page)
         });
+    } catch (err) {
+        next(err);
+    }
 };
 
 // Show a detailed page for this blacklists.

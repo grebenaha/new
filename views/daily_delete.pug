@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    if daily
+        h1 #{title}: #{daily.recipient}
+
+
+        if !daily.recipient.length
+            p Something wrong
+        else
+            p Do you really want to delete this Number?
+
+            form(method='POST' action='')
+                div.form-group
+                    input#blacklistid.form-control(type='hidden', name='dailyid', required='true', value=daily._id )
+
+                button.btn.btn-primary(type='submit') Delete
+
+            a(href='/smsAdmin/daily_messages') Back

@@ -1,17 +1,30 @@
 const Whitelist = require('../models/whitelist.model');
 const async = require('async')
 
+const paginate = require('express-paginate');
+
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
 // Show all whitelists.
-exports.whitelist_all = function(req, res) {
-    Whitelist.find({})
-        .exec(function (err, whitelist) {
-            if (err) { console.log(err) ; }
-            //Successful, so render
-            res.render('whitelist_all', { title: 'Whitelist', whitelist_list: whitelist });
+exports.whitelist_all = async function(req, res) {
+    try {
+        const [ results, itemCount ] = await Promise.all([
+            Whitelist.find({}).limit(req.query.limit).skip(req.skip).exec(),
+            Whitelist.count({}).lean()
+        ]);
+
+        const pageCount = Math.ceil(itemCount / req.query.limit);
+        res.render('whitelist_all', {
+            title: 'Whitelist messages',
+            whitelist_list: results,
+            pageCount,
+            itemCount,
+            pages: paginate.getArrayPages(req)(10, pageCount, req.query.page)
         });
+    } catch (err) {
+        next(err);
+    }
 };
 
 // Show a detailed page for this whitelists.

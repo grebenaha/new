@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    if daily
+        h2 #{title}
+
+        p #[strong Phone Number:] #{daily.recipient}
+        p #[strong Created:] #{daily.createdAt}
+        p #[strong Updated:] #{daily.updatedAt}
+        p #[strong ID:] #{daily._id}
+
+        p
+            a(href=daily.url + '/delete') Delete from Daily messages
+
+
+    else
+        p There are no sms here.

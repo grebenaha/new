@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    if hourly
+        h1 #{title}: #{hourly.recipient}
+
+
+        if !hourly.recipient.length
+            p Something wrong
+        else
+            p Do you really want to delete this Number?
+
+            form(method='POST' action='')
+                div.form-group
+                    input#blacklistid.form-control(type='hidden', name='hourlyid', required='true', value=hourly._id )
+
+                button.btn.btn-primary(type='submit') Delete
+
+            a(href='/smsAdmin/hourly_messages') Back

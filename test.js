@@ -1,5 +1,5 @@
 let test = [ { _id: '5c56909aaa503226e3c0e3e7',
-    recipient: '+972526686328',
+    recipient: '',
     __v: 0 } ]
 
 console.log(test.length)

@@ -8,13 +8,13 @@ block content
         each sms in sms_list
             div.container
                 div.row
-                    div.col-lg-11
+                    div.col-xl-8
                         a.list-group-item.list-group-item-action.list-group-item-primary
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
                             b.margin_right Message:
                             span #{sms.content}
-                    div.col-sm
+                    div.col-sm.d-flex.justify-content-between.align-items-center
                         a(href=sms.url) View
 
     else

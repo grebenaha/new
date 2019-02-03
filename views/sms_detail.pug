@@ -1,9 +1,9 @@
 extends layout
 
 block content
-    if sms
-        h2 #{title}: #{sms.recipient}
 
+    if sms
+        p #[strong Recipient:] #{sms.recipient}
         p #[strong Content:] #{sms.content}
         p #[strong Created:] #{sms.createdAt}
         p #[strong Updated:] #{sms.updatedAt}

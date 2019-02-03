@@ -43,13 +43,13 @@ exports.daily_messages_detail = function(req, res) {
             return next(err);
         }
         // Successful, so render.
-        res.render('daily_detail', { title: 'Phone number', daily: results.daily} );
+        res.render('daily_detail', { title: 'Daily messages', daily: results.daily} );
     });
 };
 
 // Show dailys creation form for GET request.
 exports.daily_messages_add_get = function(req, res) {
-    res.render('daily_form', { title: 'Add to daily'});
+    res.render('daily_form', { title: 'Daily messages'});
 };
 
 // Create dailys POST request.
@@ -70,7 +70,7 @@ exports.daily_messages_add_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('daily_form', { title: 'Add to daily', daily: req.body, errors: errors.array() });
+            res.render('daily_form', { title: 'Daily messages', daily: req.body, errors: errors.array() });
             return;
         }
         else {
@@ -101,7 +101,7 @@ exports.daily_messages_delete_get = function(req, res) {
             res.redirect('/smsAdmin/daily_messages');
         }
         // Successful, so render.
-        res.render('daily_delete', { title: 'Delete from Daily messages', daily: results.daily} );
+        res.render('daily_delete', { title: 'Daily messages', daily: results.daily} );
     });
 };
 

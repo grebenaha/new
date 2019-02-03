@@ -43,13 +43,13 @@ exports.hourly_messages_detail = function(req, res) {
             return next(err);
         }
         // Successful, so render.
-        res.render('hourly_detail', { title: 'Phone number', hourly: results.hourly} );
+        res.render('hourly_detail', { title: 'Hourly messages', hourly: results.hourly} );
     });
 };
 
 // Show hourlys creation form for GET request.
 exports.hourly_messages_add_get = function(req, res) {
-    res.render('hourly_form', { title: 'Add to hourly'});
+    res.render('hourly_form', { title: 'Hourly messages'});
 };
 
 // Create hourlys POST request.
@@ -70,7 +70,7 @@ exports.hourly_messages_add_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('hourly_form', { title: 'Add to Hourly messages', hourly: req.body, errors: errors.array() });
+            res.render('hourly_form', { title: 'Hourly messages', hourly: req.body, errors: errors.array() });
             return;
         }
         else {
@@ -101,7 +101,7 @@ exports.hourly_messages_delete_get = function(req, res) {
             res.redirect('/smsAdmin/hourly');
         }
         // Successful, so render.
-        res.render('hourly_delete', { title: 'Delete from hourly', hourly: results.hourly} );
+        res.render('hourly_delete', { title: 'Hourly messages', hourly: results.hourly} );
     });
 };
 

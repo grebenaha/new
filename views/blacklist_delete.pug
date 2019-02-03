@@ -2,8 +2,9 @@ extends layout
 
 block content
     if blacklist
-        h1 #{title}: #{blacklist.recipient}
+        h2 Delete from Blacklist
 
+        p #[strong Recipient:] #{blacklist.recipient}
 
         if !blacklist.recipient.length
             p Something wrong

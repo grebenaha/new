@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    h1= title
+    h2= title
     p
         a(href='/smsAdmin/whitelist/add') Add to Whitelist
 
@@ -10,12 +10,12 @@ block content
         each sms in whitelist_list
             div.container
                 div.row
-                    div.col-lg-10
+                    div.col-xl-8
                         a.list-group-item.list-group-item-action.list-group-item-primary
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
-                    div.col-sm
-                        a(href=sms.url) Edit
+                    div.col-sm.d-flex.justify-content-between.align-items-center
+                        a(href=sms.url) View
     else
         li There are no sms in Whitelist.
 

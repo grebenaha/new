@@ -43,13 +43,13 @@ exports.blacklist_detail = function(req, res) {
             return next(err);
         }
         // Successful, so render.
-        res.render('blacklist_detail', { title: 'Phone number', blacklist: results.blacklist} );
+        res.render('blacklist_detail', { title: 'Blacklist messages', blacklist: results.blacklist} );
     });
 };
 
 // Show blacklists creation form for GET request.
 exports.blacklist_add_get = function(req, res) {
-    res.render('blacklist_form', { title: 'Add to BlackList'});
+    res.render('blacklist_form', { title: 'Blacklist messages'});
 };
 
 // Create blacklists POST request.
@@ -70,7 +70,7 @@ exports.blacklist_add_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('blacklist_form', { title: 'Add to Blacklist', blacklist: req.body, errors: errors.array() });
+            res.render('blacklist_form', { title: 'Blacklist messages', blacklist: req.body, errors: errors.array() });
             return;
         }
         else {
@@ -101,7 +101,7 @@ exports.blacklist_delete_get = function(req, res) {
             res.redirect('/smsAdmin/blacklist');
         }
         // Successful, so render.
-        res.render('blacklist_delete', { title: 'Delete from BlackList', blacklist: results.blacklist} );
+        res.render('blacklist_delete', { title: 'Blacklist messages', blacklist: results.blacklist} );
     });
 };
 

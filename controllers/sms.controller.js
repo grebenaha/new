@@ -75,7 +75,7 @@ exports.sms_detail = function(req, res) {
             return next(err);
         }
         // Successful, so render.
-        res.render('sms_detail', { title: 'Recipient', sms: results.sms} );
+        res.render('sms_detail', { title: 'SMS List', sms: results.sms} );
     });
 };
 

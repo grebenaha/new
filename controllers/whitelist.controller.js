@@ -43,13 +43,13 @@ exports.whitelist_detail = function(req, res) {
             return (err);
         }
         // Successful, so render.
-        res.render('whitelist_detail', { title: 'WhiteList', whitelist: results.whitelist} );
+        res.render('whitelist_detail', { title: 'Whitelist messages', whitelist: results.whitelist} );
     });
 };
 
 // Show whitelists creation form for GET request.
 exports.whitelist_add_get = function(req, res) {
-    res.render('whitelist_form', { title: 'Add to Whitelist'});
+    res.render('whitelist_form', { title: 'Whitelist messages'});
 };
 
 // Create whitelists POST request.
@@ -69,7 +69,7 @@ exports.whitelist_add_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('whitelist_form', { title: 'Add to Whitelist', whitelist: req.body, errors: errors.array() });
+            res.render('whitelist_form', { title: 'Whitelist messages', whitelist: req.body, errors: errors.array() });
             return;
         }
         else {
@@ -101,7 +101,7 @@ exports.whitelist_delete_get = function(req, res) {
             res.redirect('/smsAdmin/whitelist');
         }
         // Successful, so render.
-        res.render('whitelist_delete', { title: 'Delete from Whitelist', whitelist: results.whitelist} );
+        res.render('whitelist_delete', { title: 'Whitelist messages', whitelist: results.whitelist} );
     });
 };
 

@@ -12,26 +12,24 @@ html
         // jQuery goes first
         script(src='/bower_components/jquery/dist/jquery.js')
         script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/javascripts/bootpag.js')
         script(src='/javascripts/notify.js')
     body
-        nav.navbar.navbar-expand-md.navbar-light
+        nav.navbar.navbar-expand-md.navbar-light(id='navId')
             a.navbar-brand(href='/') SMS Admin Panel
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             div.collapse.navbar-collapse(id='navbarSupportedContent')
                 ul(id='ulContent').navbar-nav.mr-auto
-                    li.nav-item.active
-                        a.nav-link(href='/') Home
-                        span.sr-only (current)
-                    li.nav-item.text-danger
+                    li(class=title==='SMS List'?'active':undefined).nav-item
                         a.nav-link(href='/smsAdmin/allsms') All SMS
-                    li.nav-item
+                    li(class=title==='Hourly messages'?'active':undefined).nav-item
                         a.nav-link(href='/smsAdmin/hourly_messages') Hourly
-                    li.nav-item
+                    li(class=title==='Daily messages'?'active':undefined).nav-item
                         a.nav-link(href='/smsAdmin/daily_messages') Daily
-                    li.nav-item
+                    li(class=title==='Whitelist messages'?'active':undefined).nav-item
                         a.nav-link(href='/smsAdmin/whitelist') WhiteList
-                    li.nav-item
+                    li(class=title==='Blacklist messages'?'active':undefined).nav-item
                         a.nav-link(href='/smsAdmin/blackList') BlackList
         main(role='main')
             div.jumbotron.bg-light

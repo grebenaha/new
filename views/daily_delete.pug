@@ -2,8 +2,8 @@ extends layout
 
 block content
     if daily
-        h1 #{title}: #{daily.recipient}
-
+        h2 Delete from Daily messages
+        p #[strong Recipient:] #{daily.recipient}
 
         if !daily.recipient.length
             p Something wrong

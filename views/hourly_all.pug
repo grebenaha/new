@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    h1= title
+    h2= title
     //p
     //    a(href='/smsAdmin/hourly_messages/add') Add to Hourly
 
@@ -10,11 +10,11 @@ block content
         each sms in hourly_list
             div.container
                 div.row
-                    div.col-lg-10
+                    div.col-xl-8
                         a.list-group-item.list-group-item-action.list-group-item-primary
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
-                    div.col-sm
+                    div.col-sm.d-flex.justify-content-between.align-items-center
                         a(href=sms.url) Edit
 
     else

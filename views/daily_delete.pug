@@ -2,7 +2,7 @@ extends layout
 
 block content
     if daily
-        h2 Delete from Daily messages
+        h3 Delete from Daily messages
         p #[strong Recipient:] #{daily.recipient}
 
         if !daily.recipient.length

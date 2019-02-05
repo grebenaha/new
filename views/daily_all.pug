@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    h2= title
+    h3= title
     //p
     //    a(href='/smsAdmin/daily_messages/add') Add to Daily
 
@@ -11,7 +11,7 @@ block content
             div.container
                 div.row
                     div.col-xl-8
-                        a.list-group-item.list-group-item-action.list-group-item-primary
+                        a.list-group-item
                             b.margin_right Recipient:
                             span.margin_right #{sms.recipient}
                     div.col-sm.d-flex.justify-content-between.align-items-center

@@ -1,29 +1,30 @@
 extends layout
 block content
 
-    h1= title
-    p
-        h4 Welcome
+    h3= title
 
     if error
         p Error getting content.
     else if data
-        p The messages counts:
 
-
-        ul.list-group
-            li.d-flex.justify-content-between.align-items-center.col-sm-2
-                a(href='smsAdmin/allsms').text-info #[strong All SMS:]
-                span.badge.badge-primary.badge-pill !{data.sms_count}
-            li.d-flex.justify-content-between.align-items-center.col-sm-2
-                a(href='smsAdmin/hourly_messages').text-info #[strong Hourly SMS:]
-                span.badge.badge-primary.badge-pill !{data.hourly_count}
-            li.d-flex.justify-content-between.align-items-center.col-sm-2
-                a(href='smsAdmin/daily_messages').text-info #[strong Daily SMS:]
-                span.badge.badge-primary.badge-pill !{data.daily_count}
-            li.d-flex.justify-content-between.align-items-center.col-sm-2
-                a(href='smsAdmin/whitelist').text-info #[strong Whitelist:]
-                span.badge.badge-primary.badge-pill !{data.whitelist_count}
-            li.d-flex.justify-content-between.align-items-center.col-sm-2
-                a(href='smsAdmin/blacklist').text-info #[strong Blacklist:]
-                span.badge.badge-primary.badge-pill !{data.blacklist_count}
+        div.row
+            div.col-sm
+            div.col-sm-6
+                p The messages counts:
+                ul.list-group
+                    li.d-flex.justify-content-between.align-items-center.col-sm-4
+                        a(href='smsAdmin/allsms').text-info #[strong All SMS:]
+                        span.badge.badge-primary.badge-pill !{data.sms_count}
+                    li.d-flex.justify-content-between.align-items-center.col-sm-4
+                        a(href='smsAdmin/hourly_messages').text-info #[strong Hourly SMS:]
+                        span.badge.badge-primary.badge-pill !{data.hourly_count}
+                    li.d-flex.justify-content-between.align-items-center.col-sm-4
+                        a(href='smsAdmin/daily_messages').text-info #[strong Daily SMS:]
+                        span.badge.badge-primary.badge-pill !{data.daily_count}
+                    li.d-flex.justify-content-between.align-items-center.col-sm-4
+                        a(href='smsAdmin/whitelist').text-info #[strong Whitelist:]
+                        span.badge.badge-primary.badge-pill !{data.whitelist_count}
+                    li.d-flex.justify-content-between.align-items-center.col-sm-4
+                        a(href='smsAdmin/blacklist').text-info #[strong Blacklist:]
+                        span.badge.badge-primary.badge-pill !{data.blacklist_count}
+            div.col-sm

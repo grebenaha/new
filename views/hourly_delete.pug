@@ -2,7 +2,7 @@ extends layout
 
 block content
     if hourly
-        h2 Delete from Hourly messages
+        h3 Delete from Hourly messages
         p #[strong Recipient:] #{hourly.recipient}
 
         if !hourly.recipient.length

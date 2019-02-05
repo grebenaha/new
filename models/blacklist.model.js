@@ -10,7 +10,7 @@ const BlacklistsSchema = new Schema({
         required: true,
         type: String
     }
-})
+}, { timestamps: true})
 
 BlacklistsSchema
     .virtual('url')

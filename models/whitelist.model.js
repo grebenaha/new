@@ -10,7 +10,7 @@ const WhitelistsSchema = new Schema({
         required: true,
         type: String
     }
-})
+}, { timestamps: true })
 
 WhitelistsSchema
     .virtual('url')

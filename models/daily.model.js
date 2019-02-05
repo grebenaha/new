@@ -3,17 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SmsSchema = new Schema({
-    recipient: {
-        index: {
-            unique: true
-        },
+    content: {
         required: true,
         type: String
     },
-    content: {
+    recipient: {
+        required: true,
         type: String
     }
-}, { timestamps: true });
+}, { timestamps: true })
 
 SmsSchema
     .virtual('url')

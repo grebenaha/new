@@ -11,9 +11,9 @@ const smsRouter = require('./routes/smsAdmin');
 
 const app = express();
 
-const dbUser = 'igor';
-const dbPass = 'Neiron30';
-const dbURI = '@sms-shard-00-00-w6avv.mongodb.net:27017,sms-shard-00-01-w6avv.mongodb.net:27017,sms-shard-00-02-w6avv.mongodb.net:27017/sms?ssl=true&replicaSet=sms-shard-0&authSource=admin&retryWrites=true';
+const dbUser = '';
+const dbPass = '';
+const dbURI = '';
 
 
 
